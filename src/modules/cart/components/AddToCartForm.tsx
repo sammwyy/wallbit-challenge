@@ -1,6 +1,7 @@
 import { ProductModal } from "@/products/components/ProductModal";
 import useProducts from "@/products/hooks/useProducts";
 import Button from "@/shared/components/Button";
+import Container from "@/shared/components/Container";
 import Input from "@/shared/components/Input";
 import useDisclosure from "@/shared/hooks/useDisclosure";
 import { useEffect, useState } from "react";
@@ -55,7 +56,7 @@ export function AddToCartForm() {
       />
 
       {/* Form */}
-      <div className="p-6 bg-black/40 backdrop-blur-xl rounded-xl border border-white/10 mb-6">
+      <Container className="mb-6">
         <form onSubmit={handleSubmit}>
           <div className="flex flex-col gap-1 items-start">
             <div className="flex gap-3 items-end w-full">
@@ -104,7 +105,7 @@ export function AddToCartForm() {
             </button>
           </div>
         </form>
-      </div>
+      </Container>
     </>
   );
 }

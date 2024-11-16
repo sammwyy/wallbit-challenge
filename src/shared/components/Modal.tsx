@@ -20,7 +20,7 @@ export function Modal({ isOpen, onClose, title, children }: ModalProps) {
       }}
     >
       <div
-        className="bg-gray-900/95 rounded-xl border border-white/10 w-full max-w-3xl max-h-[80vh] overflow-hidden"
+        className="bg-indigo-950/50 backdrop-blur-md rounded-xl border border-white/10 w-full max-w-3xl max-h-[80vh] overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="p-4 border-b border-white/10">

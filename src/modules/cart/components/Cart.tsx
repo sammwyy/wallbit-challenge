@@ -1,15 +1,7 @@
 import { Minus, Plus, ShoppingCart, X } from "lucide-react";
-import { PropsWithChildren } from "react";
 
+import Container from "@/shared/components/Container";
 import useCart from "../hooks/useCart";
-
-function CartWrapper({ children }: PropsWithChildren) {
-  return (
-    <div className="p-6 bg-black/40 backdrop-blur-xl rounded-xl border border-white/10">
-      {children}
-    </div>
-  );
-}
 
 export default function Cart() {
   const { items, cartDate, updateQuantity, removeItem, totalCost, totalItems } =
@@ -17,17 +9,17 @@ export default function Cart() {
 
   if (items.length == 0) {
     return (
-      <CartWrapper>
+      <Container>
         <div className="flex flex-col items-center justify-center py-8">
           <ShoppingCart className="w-16 h-16 text-white/30 mb-4" />
           <p className="text-white/70">Tu carrito se encuentra vacío</p>
         </div>
-      </CartWrapper>
+      </Container>
     );
   }
 
   return (
-    <CartWrapper>
+    <Container>
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-semibold text-white">Carrito de compras</h2>
         <p className="text-sm text-white/60">
@@ -95,6 +87,6 @@ export default function Cart() {
           <span>${totalCost.toFixed(2)}</span>
         </div>
       </div>
-    </CartWrapper>
+    </Container>
   );
 }
