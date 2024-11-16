@@ -1,3 +1,4 @@
+import { Loader2 } from "lucide-react";
 import { PropsWithChildren } from "react";
 
 interface LoaderProps extends PropsWithChildren {
@@ -14,7 +15,12 @@ export default function Loader({
 }: LoaderProps) {
   return (
     <div>
-      {!loaded && <div>{loadingText}</div>}
+      {!loaded && (
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Loader2 className="w-8 h-8 text-white animate-spin" />
+          <span className="text-white text-md">{loadingText}</span>
+        </div>
+      )}
       {errorText && <div>{errorText}</div>}
       {loaded && !errorText && children}
     </div>
