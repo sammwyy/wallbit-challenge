@@ -59,7 +59,9 @@ export const CartProvider = ({ children }: PropsWithChildren) => {
   const updateQuantity = (id: number, quantity: number) => {
     setItems((prevItems) => {
       return prevItems.map((item) =>
-        item.productId === id ? { ...item, quantity } : item
+        item.productId === id
+          ? { ...item, quantity: Math.max(1, quantity) }
+          : item
       );
     });
   };

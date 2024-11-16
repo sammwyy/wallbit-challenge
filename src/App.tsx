@@ -1,3 +1,4 @@
+import { AddToCartForm } from "@/cart/components/AddToCartForm";
 import Cart from "@/cart/components/Cart";
 import { CartProvider } from "@/cart/contexts/cart.context";
 import { ProductsProvider } from "@/products/contexts/products.context";
@@ -8,6 +9,7 @@ function App() {
       <ProductsProvider>
         <CartProvider>
           <div className="max-w-2xl mx-auto px-4 py-8 relative z-10">
+            <AddToCartForm />
             <Cart />
           </div>
         </CartProvider>

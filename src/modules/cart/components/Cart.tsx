@@ -1,6 +1,6 @@
 import { Minus, Plus, ShoppingCart, X } from "lucide-react";
-
 import { PropsWithChildren } from "react";
+
 import useCart from "../hooks/useCart";
 
 function CartWrapper({ children }: PropsWithChildren) {
@@ -29,7 +29,7 @@ export default function Cart() {
   return (
     <CartWrapper>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-semibold text-white">Shopping Cart</h2>
+        <h2 className="text-xl font-semibold text-white">Carrito de compras</h2>
         <p className="text-sm text-white/60">
           {cartDate ? cartDate.toISOString() : "(Carrito sin guardar)"}
         </p>
@@ -85,11 +85,11 @@ export default function Cart() {
 
       <div className="mt-6 pt-6 border-t border-white/10">
         <div className="flex justify-between text-white/70 mb-2">
-          <span>Total Items:</span>
+          <span>Productos:</span>
           <span>{totalItems}</span>
         </div>
         <div className="flex justify-between text-xl font-semibold text-white">
-          <span>Total Cost:</span>
+          <span>Subtotal:</span>
           <span>${totalCost.toFixed(2)}</span>
         </div>
       </div>
