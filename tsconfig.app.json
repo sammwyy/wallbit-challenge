@@ -24,6 +24,7 @@
 
     /* Path aliases */
     "paths": {
+      "@/shared/*": ["./src/shared/*"],
       "@/*": ["./src/modules/*"]
     }
   },

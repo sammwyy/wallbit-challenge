@@ -1,3 +1,5 @@
+import { Product } from "@/products";
+import useProducts from "@/products/hooks/useProducts";
 import { createContext, PropsWithChildren, useEffect, useState } from "react";
 import { CartItem } from "..";
 
@@ -16,17 +18,33 @@ export const CartContext = createContext<CartContextType | undefined>(
 );
 
 function saveCart(items: CartItem[], date: Date) {
-  localStorage.setItem("cartItems", JSON.stringify(items));
+  localStorage.setItem(
+    "cartItems",
+    JSON.stringify(
+      items.map((i) => {
+        const { product, ...rest } = i;
+        return rest;
+      })
+    )
+  );
   localStorage.setItem("cartDate", date.toISOString());
 }
 
-function loadCart(): CartItem[] {
-  const cartItems = localStorage.getItem("cartItems");
-  return cartItems ? JSON.parse(cartItems) : [];
+function loadCart(products: Product[]): CartItem[] {
+  const rawCartItems = localStorage.getItem("cartItems");
+  const cartItems = rawCartItems ? JSON.parse(rawCartItems) : [];
+
+  cartItems.forEach((item: CartItem) => {
+    item.product = products.find((p) => p.id === item.productId);
+  });
+
+  return cartItems;
 }
 
 export const CartProvider = ({ children }: PropsWithChildren) => {
-  const [items, setItems] = useState<CartItem[]>(loadCart);
+  const { products } = useProducts();
+
+  const [items, setItems] = useState<CartItem[]>(() => loadCart(products));
   const [cartDate, setCartDate] = useState(() => {
     const savedDate = localStorage.getItem("cartDate");
     return savedDate ? new Date(savedDate) : null;

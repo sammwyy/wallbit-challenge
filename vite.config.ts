@@ -9,6 +9,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
+      "@/shared": "/src/shared",
       "@": "/src/modules",
     },
   },
