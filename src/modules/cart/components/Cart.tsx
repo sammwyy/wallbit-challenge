@@ -31,11 +31,13 @@ export default function Cart() {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-semibold text-white">Carrito de compras</h2>
         <p className="text-sm text-white/60">
-          {cartDate ? cartDate.toISOString() : "(Carrito sin guardar)"}
+          {cartDate
+            ? `Guardado el ${cartDate.toLocaleString()}`
+            : "(Carrito sin guardar)"}
         </p>
       </div>
 
-      <div className="space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+      <div className="space-y-4 h-[40vh] overflow-y-auto pr-2">
         {items.map((item) => (
           <div
             key={item.productId}
